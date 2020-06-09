@@ -1,10 +1,20 @@
 const path = require('path');
-console.log(path, __dirname)
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {
+	CleanWebpackPlugin
+} = require('clean-webpack-plugin');
+console.log(CleanWebpackPlugin)
 const config = {
-	entry: './src/index.js',
+	entry: {
+		index: './src/index.js',
+	},
 	output: {
+		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, './dist'),
-		filename: 'main.bundle.js'
+	},
+	devtool: 'inline-source-map',
+	devServer: {
+		contentBase: './dist'
 	},
 	module: {
 		rules: [{
@@ -13,12 +23,18 @@ const config = {
 				'style-loader',
 				'css-loader',
 			]
-		},{
+		}, {
 			test: /\.(png|jpg|svg|gif)$/,
 			use: [
 				'file-loader'
 			]
 		}]
-	}
+	},
+	plugins: [
+		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			title: 'webpack test'
+		})
+	]
 };
 module.exports = config;
