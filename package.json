@@ -7,8 +7,8 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "webpack-dev-server --open",
-		"build": "webpack"
+		"start": "webpack-dev-server",
+		"build": "webpack --colors"
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^3.0.0",

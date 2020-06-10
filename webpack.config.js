@@ -5,6 +5,11 @@ const {
 } = require('clean-webpack-plugin');
 console.log(CleanWebpackPlugin)
 const config = {
+	devServer: {
+		open: true,
+		contentBase: path.join(__dirname,'dist'),
+		port: 8081
+	},
 	entry: {
 		index: './src/index.js',
 	},
@@ -13,9 +18,6 @@ const config = {
 		path: path.resolve(__dirname, './dist'),
 	},
 	devtool: 'inline-source-map',
-	devServer: {
-		contentBase: './dist'
-	},
 	module: {
 		rules: [{
 			test: /\.css$/,
