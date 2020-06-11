@@ -14,4 +14,13 @@ function component() {
 	ele.appendChild(img);
 	return ele;
 }
-document.body.appendChild(component());
+let childEle = component();
+document.body.appendChild(childEle);
+if (module.hot) {
+   module.hot.accept('./printMe.js', function() {
+     console.log('Accepting the updated printMe module!');
+	 document.body.removeChild(childEle);
+	 childEle = component();
+	 document.body.appendChild(childEle);
+   })
+ }

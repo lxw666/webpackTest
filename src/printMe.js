@@ -1,3 +1,4 @@
+import {print} from './print.js';
 export default function printMe(){
-	console.log('this is an error')
+	print();
 }
