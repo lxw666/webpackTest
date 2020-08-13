@@ -1,21 +1,25 @@
 Arguments: 
-  D:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add webpack-dev-middleware express --dev
+  D:\Program Files\nodejs\node.exe D:\Program Files\yarn\bin\yarn.js build
 
 PATH: 
-  D:\Program Files\cmder\bin;D:\Program Files\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\Program Files\cmder\vendor\conemu-maximus5;D:\Program Files\cmder\vendor\conemu-maximus5\ConEmu;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;D:\Program Files\nodejs\;D:\Program Files\Git\cmd;D:\Program Files\Ruby24-x64\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\cmder;C:\Users\Administrator\AppData\Roaming\npm;D:\Program Files\Git\usr\bin;D:\Program Files\Git\usr\share\vim\vim74;D:\Program Files\cmder\
+  D:\software\cmder\bin;D:\software\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\software\cmder\vendor\conemu-maximus5;D:\software\cmder\vendor\conemu-maximus5\ConEmu;D:\Program Files\Ruby24-x64\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\ProgramData\chocolatey\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;D:\Program Files\yarn\bin\;D:\Program Files\svn\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\Users\lenovo\AppData\Local\Microsoft\WindowsApps;C:\tools\dart-sdk\bin;C:\Users\lenovo\AppData\Roaming\Pub\Cache\bin;C:\Users\lenovo\AppData\Local\Yarn\bin;C:\Users\lenovo\AppData\Local\Android\Sdk\platform-tools;C:\Users\lenovo\AppData\Roaming\npm;d:\Program Files\Git\usr\bin;d:\Program Files\Git\usr\share\vim\vim74;D:\software\cmder\
 
 Yarn version: 
-  1.22.4
+  1.12.1
 
 Node version: 
-  12.18.0
+  12.16.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: connect ETIMEDOUT 47.241.4.205:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16)
+  SyntaxError: D:\work\webpackTest\package.json: Unexpected token / in JSON at position 294
+      at JSON.parse (<anonymous>)
+      at D:\Program Files\yarn\lib\cli.js:1166:59
+      at Generator.next (<anonymous>)
+      at step (D:\Program Files\yarn\lib\cli.js:92:30)
+      at D:\Program Files\yarn\lib\cli.js:103:13
 
 npm manifest: 
   {
@@ -27,23 +31,29 @@ npm manifest:
   	"license": "MIT",
   	"private": true,
   	"scripts": {
-  		"start": "webpack-dev-server",
-  		"serve": "node server.js",
-  		"build": "webpack --colors"
+  		"start": "webpack-dev-server --config build/webpack.dev.js",
+  		// "build": "webpack --config build/webpack.dev.js"
+  		"build": "webpack"
   	},
   	"devDependencies": {
   		"clean-webpack-plugin": "^3.0.0",
   		"css-loader": "^3.5.3",
+  		"express": "^4.17.1",
   		"file-loader": "^6.0.0",
   		"html-webpack-plugin": "^4.3.0",
   		"style-loader": "^1.2.1",
   		"webpack": "^4.43.0",
   		"webpack-cli": "^3.3.11",
-  		"webpack-dev-server": "^3.11.0"
+  		"webpack-dev-middleware": "^3.7.2",
+  		"webpack-dev-server": "^3.11.0",
+  		"webpack-merge": "^4.2.2"
   	},
   	"dependencies": {
   		"lodash": "^4.17.15"
-  	}
+  	},
+  	"sideEffects": [
+  		"*.css"
+  	]
   }
 
 yarn manifest: 
@@ -4263,6 +4273,13 @@ Lockfile:
     dependencies:
       ansi-colors "^3.0.0"
       uuid "^3.3.2"
+  
+  webpack-merge@^4.2.2:
+    version "4.2.2"
+    resolved "https://r.cnpmjs.org/webpack-merge/download/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
+    integrity sha1-onxS6ng9E5iv0gh/VH17nS9DY00=
+    dependencies:
+      lodash "^4.17.15"
   
   webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     version "1.4.3"
